@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriangleApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Triangle Application" Height="300" Width="350"
+        Background="Orange"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20"
+          Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Labels for sides-->
+        <Label Content="Side a length:"
+               Grid.Row="0"
+               Grid.Column="0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontWeight="Bold"/>
+        <Label Content="Side b length:"
+               Grid.Row="1"
+               Grid.Column="0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontWeight="Bold"/>
+        <Label Content="Side c length:"
+               Grid.Row="2"
+               Grid.Column="0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontWeight="Bold"/>
         
+        <!--Text boxes for user input-->
+        <TextBox x:Name="TxtBoxSideA"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"/>
+        <TextBox x:Name="TxtBoxSideB"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"/>
+        <TextBox x:Name="TxtBoxSideC"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"/>
+        
+        <!--Results-->
+        <Label Content="Results..."
+               Grid.Row="3"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontWeight="Bold"/>
     </Grid>
 </Window>
