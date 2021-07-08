@@ -20,9 +20,57 @@ namespace TriangleApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        double sideA, sideB, sideC, angleA, angleB, angleC;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        /// <summary>
+        /// Event handlers for when the user types something
+        /// into the text boxes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtBoxSideA_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // validate user input
+            if (double.TryParse(TxtBoxSideA.Text, out sideA) || TxtBoxSideA.Text == string.Empty)
+            {
+                TxtBoxSideA.Background = Brushes.White;
+            }
+            else
+            {
+                TxtBoxSideA.Background = Brushes.LightPink;
+            }
+        }
+
+        private void TxtBoxSideB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // validate user input
+            if (double.TryParse(TxtBoxSideB.Text, out sideB) || TxtBoxSideB.Text == string.Empty)
+            {
+                TxtBoxSideB.Background = Brushes.White;
+            }
+            else
+            {
+                TxtBoxSideB.Background = Brushes.LightPink;
+            }
+        }
+
+        private void TxtBoxSideC_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // validate user input
+            if (double.TryParse(TxtBoxSideC.Text, out sideC) || TxtBoxSideC.Text == string.Empty)
+            {
+                TxtBoxSideC.Background = Brushes.White;
+            }
+            else
+            {
+                TxtBoxSideC.Background = Brushes.LightPink;
+            }
         }
     }
 }

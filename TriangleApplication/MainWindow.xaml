@@ -46,22 +46,26 @@
                  Grid.Column="1"
                  HorizontalContentAlignment="Left"
                  VerticalContentAlignment="Center"
-                 Margin="5"/>
+                 Margin="5"
+                 TextChanged="TxtBoxSideA_TextChanged"/>
         <TextBox x:Name="TxtBoxSideB"
                  Grid.Row="1"
                  Grid.Column="1"
                  HorizontalContentAlignment="Left"
                  VerticalContentAlignment="Center"
-                 Margin="5"/>
+                 Margin="5"
+                 TextChanged="TxtBoxSideB_TextChanged"/>
         <TextBox x:Name="TxtBoxSideC"
                  Grid.Row="2"
                  Grid.Column="1"
                  HorizontalContentAlignment="Left"
                  VerticalContentAlignment="Center"
-                 Margin="5"/>
-        
+                 Margin="5"
+                 TextChanged="TxtBoxSideC_TextChanged"/>
+
         <!--Results-->
-        <Label Content="Results..."
+        <Label x:Name="LblResults"
+               Content="Please enter some numbers!"
                Grid.Row="3"
                Grid.ColumnSpan="2"
                HorizontalAlignment="Center"
