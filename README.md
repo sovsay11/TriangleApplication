@@ -2,7 +2,7 @@
 
 <!--About The Project-->
 ## About The Project
-This application will enable users to enter side values of a triangle. The application will then process the input and return whether a valid triangle is possible with the given input, along with the type of triangle and degree values.
+This application will prompt users to enter side values of a triangle. The application will then process the input and return whether a valid triangle is possible with the given values. If the values are valid, the application will also return the type of triangle created and its degree values.
 
 ### Built With
 <ul>
@@ -14,9 +14,11 @@ This application will enable users to enter side values of a triangle. The appli
 </ul>
 
 ## Getting Started
-IMO, the most straightforward way to get a local copy of this set up is to have VS already installed on your machine. Download a zipped copy of this code by going to the "<> Code" tab and expanding the green code button near the top right. Then press "Download Zip".
+Ensure that VS is already installed on your machine. Download a zipped copy of this code by going to the "<> Code" tab and expanding the green code button near the top right. Then press "Download Zip".
 
 Once that is done, unzip the folder and open the project in VS by launching the solution file.
+
+Alternatively, you can also press the green code button and copy the Git link. Then close a local copy to your device. See the "Installation" section below for more info on this process.
 
 ### Prerequisites
 <ul>
@@ -34,7 +36,7 @@ https://github.com/sovsay11/TriangleApplication.git
     
 
 ## Usage
-This app was created to showcase various features of WPF applications for a test project.
+This application was primarily created to showcase various features of WPF applications for a test project. The application can be used to validate side values of a triangle to see if they form a valid triangle. Triangle type and degree values should also be returned if possible.
 
 Image of the UI:
 <p align="center">
