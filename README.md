@@ -41,10 +41,10 @@ git clone https://github.com/sovsay11/TriangleApplication.git
 ## Usage
 This application was primarily created to showcase various features of WPF applications for a test project. The application can be used to validate side values of a triangle to see if they form a valid triangle. Triangle type and degree values should also be returned if possible.
 
-Image of the UI:
+### Image of the UI:
 <p align="center">
-<img src="https://github.com/sovsay11/sovsay11/blob/712673bf72a2f9ab6aa2f701bd04177287615a44/TriangleApplicationUI.png" alt="Image of Triangle Application" height="50%" width="50%"/>
-</p>
+<img src="https://github.com/sovsay11/sovsay11/blob/8c94a850c3326ba541c456bf02f039c77275d9dc/TriangleApplicationResults.png" alt="Image of Triangle Application" height="50%" width="50%"/>
+</p> 
 
 ## Contact
 Noah Say - sovannarasay11@gmail.com - <a href="https://www.linkedin.com/in/noah-say-0b6210187/">LinkedIn</a>
