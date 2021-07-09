@@ -139,8 +139,7 @@ namespace TriangleApplication
         /// <returns></returns>
         private bool ValidateUserInput()
         {
-            if (TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty &&
-                sideA != 0 && sideB != 0 && sideC != 0)
+            if (TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty)
             {
                 return true;
             }
