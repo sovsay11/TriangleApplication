@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriangleApplication"
         mc:Ignorable="d"
-        Title="Triangle Application" Height="375" Width="450"
+        Title="Triangle Application" Height="400" Width="460"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         WindowStyle="None"
@@ -20,7 +20,7 @@
                        FontWeight="Bold"
                        FontSize="32"
                        Foreground="#ffffff"
-                       Margin="35 5 25 5"/>
+                       Margin="50 5 20 5"/>
             <Button x:Name="BtnMin"
                         Content="—"
                         ToolTip="Minimize"
@@ -139,21 +139,29 @@
                     </Border.Effect>
                 </Border>
             </Grid>
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+            </Border.Effect>
+
         </Border>
         <!--Results-->
         <Border Background="#706258"
                 CornerRadius="10"
-                Margin="15,0,15,15"
+                Margin="15 5 15 15"
                 BorderThickness="1"
                 BorderBrush="#212121">
             <TextBlock x:Name="TxtBlockResults"
-                   Foreground="#ffffff"
+                       Foreground="#ffffff"
                        FontSize="18"
-                   Text="Please enter some numbers!"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   TextWrapping="Wrap"
-                   Margin="5"/>
+                       Height="120"
+                       HorizontalAlignment="Center"
+                       Text="Please enter some numbers for the sides! If the side values are valid, the side type, angle type, and degrees of the triangle will be shown."
+                       TextWrapping="Wrap"
+                       Margin="5 10 5 10"/>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+            </Border.Effect>
         </Border>
     </StackPanel>
 </Window>

@@ -70,9 +70,7 @@ namespace TriangleApplication
         /// <returns></returns>
         public bool IsTriangle()
         {
-            return SideA + SideB > SideC &&
-                SideA + SideC > SideB &&
-                SideB + SideC > SideA;
+            return SideA + SideB > SideC && SideA + SideC > SideB && SideB + SideC > SideA;
         }
     }
 }
