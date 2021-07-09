@@ -44,6 +44,7 @@ namespace TriangleApplication
             else
             {
                 TxtBoxSideA.Background = Brushes.LightPink;
+                LblResults.Content = "Please enter valid numbers";
             }
         }
 
@@ -53,10 +54,16 @@ namespace TriangleApplication
             if (double.TryParse(TxtBoxSideB.Text, out sideB) || TxtBoxSideB.Text == string.Empty)
             {
                 TxtBoxSideB.Background = Brushes.White;
+
+                if (ValidateUserInput())
+                {
+                    LblResults.Content = "Inputs are valid";
+                }
             }
             else
             {
                 TxtBoxSideB.Background = Brushes.LightPink;
+                LblResults.Content = "Please enter valid numbers";
             }
         }
 
@@ -66,11 +73,27 @@ namespace TriangleApplication
             if (double.TryParse(TxtBoxSideC.Text, out sideC) || TxtBoxSideC.Text == string.Empty)
             {
                 TxtBoxSideC.Background = Brushes.White;
+
+                if (ValidateUserInput())
+                {
+                    LblResults.Content = "Inputs are valid";
+                }
             }
             else
             {
                 TxtBoxSideC.Background = Brushes.LightPink;
+                LblResults.Content = "Please enter valid numbers";
             }
+        }
+
+        private bool ValidateUserInput()
+        {
+            if (TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty &&
+                sideA != 0 && sideB != 0 && sideC != 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
