@@ -51,7 +51,7 @@ namespace TriangleApplication
                     // return text to the user about triangle side type, angle type, and angle values or if a triangle cannot be created with the given values
                     TxtBlockResults.Text = triangle.IsTriangle()
                         ? $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n" +
-                            $"The angles for the triangle are as follows:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°"
+                            $"The angles for the triangle are:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°"
                         : "A triangle is not possible with the given values.";
                 }
                 else
@@ -74,6 +74,21 @@ namespace TriangleApplication
         private bool ValidateUserInput()
         {
             return TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) DragMove();
+        }
+
+        private void BtnMin_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

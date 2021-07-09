@@ -5,74 +5,155 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriangleApplication"
         mc:Ignorable="d"
-        Title="Triangle Application" Height="300" Width="350"
-        Background="Orange"
-        WindowStartupLocation="CenterScreen">
-    <Grid Margin="20"
-          Background="LightGray">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        Title="Triangle Application" Height="375" Width="450"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        WindowStyle="None"
+        Background="#CC6F29"
+        MouseDown="Window_MouseDown">
+    <StackPanel>
+        <StackPanel Background="#212121"
+                        Orientation="Horizontal">
+            <Label Content="Triangle Application"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="32"
+                       Foreground="#ffffff"
+                       Margin="35 5 25 5"/>
+            <Button x:Name="BtnMin"
+                        Content="—"
+                        ToolTip="Minimize"
+                        Foreground="White"
+                        Width="30"
+                        Height="30"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="BtnMin_Click"/>
+            <Button x:Name="BtnExit"
+                        Content="X"
+                        ToolTip="Close"
+                        Foreground="White"
+                        Width="30"
+                        Height="30"
+                        Background="IndianRed"
+                        BorderThickness="0"
+                        Click="BtnExit_Click"/>
+        </StackPanel>
 
-        <!--Labels for sides-->
-        <Label Content="Side a length:"
+        <Border CornerRadius="10"
+                Margin="15"
+                Background="#706258"
+                BorderThickness="1"
+                BorderBrush="#212121">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Labels for sides-->
+                <Label Content="Side a length:"
+                   Foreground="#ffffff"
                Grid.Row="0"
                Grid.Column="0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               FontWeight="Bold"/>
-        <Label Content="Side b length:"
+                       FontSize="18"/>
+                <Label Content="Side b length:"
+                   Foreground="#ffffff"
                Grid.Row="1"
                Grid.Column="0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               FontWeight="Bold"/>
-        <Label Content="Side c length:"
+                       FontSize="18"/>
+                <Label Content="Side c length:"
+                   Foreground="#ffffff"
                Grid.Row="2"
                Grid.Column="0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               FontWeight="Bold"/>
+                       FontSize="18"/>
 
-        <!--Text boxes for user input-->
-        <TextBox x:Name="TxtBoxSideA"
-                 Grid.Row="0"
-                 Grid.Column="1"
-                 HorizontalContentAlignment="Left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 TextChanged="TxtBoxSide_TextChanged"/>
-        <TextBox x:Name="TxtBoxSideB"
-                 Grid.Row="1"
-                 Grid.Column="1"
-                 HorizontalContentAlignment="Left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 TextChanged="TxtBoxSide_TextChanged"/>
-        <TextBox x:Name="TxtBoxSideC"
-                 Grid.Row="2"
-                 Grid.Column="1"
-                 HorizontalContentAlignment="Left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 TextChanged="TxtBoxSide_TextChanged"/>
+                <!--Text boxes for user input-->
+                <Border CornerRadius="5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="10"
+                            Background="#ffffff">
+                    <TextBox x:Name="TxtBoxSideA"
+                                 HorizontalContentAlignment="Left"
+                                 VerticalContentAlignment="Center"
+                                 Padding="2,0"
+                                 Margin="5"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontSize="14"
+                                 TextChanged="TxtBoxSide_TextChanged"/>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                    </Border.Effect>
+                </Border>
 
+                <Border CornerRadius="5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Background="#ffffff">
+                    <TextBox x:Name="TxtBoxSideB"
+                                 Padding="2,0"
+                                 Margin="5"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontSize="14"
+                             HorizontalContentAlignment="Left"
+                             VerticalContentAlignment="Center"
+                             TextChanged="TxtBoxSide_TextChanged"/>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border CornerRadius="5"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="10"
+                Background="#ffffff">
+                    <TextBox x:Name="TxtBoxSideC"
+                                 Padding="2,0"
+                                 Margin="5"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontSize="14"
+                                 HorizontalContentAlignment="Left"
+                                 VerticalContentAlignment="Center"
+                                 TextChanged="TxtBoxSide_TextChanged"/>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+        </Border>
         <!--Results-->
-        <TextBlock x:Name="TxtBlockResults"
+        <Border Background="#706258"
+                CornerRadius="10"
+                Margin="15,0,15,15"
+                BorderThickness="1"
+                BorderBrush="#212121">
+            <TextBlock x:Name="TxtBlockResults"
+                   Foreground="#ffffff"
+                       FontSize="18"
                    Text="Please enter some numbers!"
-                   Grid.Row="3"
-                   Grid.ColumnSpan="2"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontWeight="Bold"
                    TextWrapping="Wrap"
                    Margin="5"/>
-    </Grid>
+        </Border>
+    </StackPanel>
 </Window>
