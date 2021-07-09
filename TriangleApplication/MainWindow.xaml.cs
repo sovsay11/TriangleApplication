@@ -46,7 +46,8 @@ namespace TriangleApplication
                     // check if the sides produce a valid triangle
                     if (IsTriangle())
                     {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleSideType()} triangle.";
+                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
+                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
                     }
                     else
                     {
@@ -74,7 +75,8 @@ namespace TriangleApplication
                     // check if the sides produce a valid triangle
                     if (IsTriangle())
                     {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleSideType()} triangle.";
+                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
+                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
                     }
                     else
                     {
@@ -102,7 +104,8 @@ namespace TriangleApplication
                     // check if the sides produce a valid triangle
                     if (IsTriangle())
                     {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleSideType()} triangle.";
+                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
+                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
                     }
                     else
                     {
@@ -156,6 +159,41 @@ namespace TriangleApplication
             else
             {
                 return "isosceles";
+            }
+        }
+
+        /// <summary>
+        /// Sets the angle values for the triangle given the sides.
+        /// Also determines whether the provided angles create an obtuse,
+        /// acute, or right triangle.
+        /// </summary>
+        /// <returns></returns>
+        private string GetTriangleAngle()
+        {
+            // cos(C) = (a2 + b2 − c2) / 2ab
+            // cos(A) = (b2 + c2 − a2) / 2bc
+            // cos(B) = (c2 + a2 − b2) / 2ca
+            double powA = Math.Pow(sideA, 2);
+            double powB = Math.Pow(sideB, 2);
+            double powC = Math.Pow(sideC, 2);
+
+            // calculate the angles and round them
+            angleA = Math.Round(Math.Acos((powA + powB - powC) / (2 * sideA * sideB)) * (180 / Math.PI), 2);
+            angleB = Math.Round(Math.Acos((powB + powC - powA) / (2 * sideB * sideC)) * (180 / Math.PI), 2);
+            angleC = Math.Round(Math.Acos((powC + powA - powB) / (2 * sideC * sideA)) * (180 / Math.PI), 2);
+
+            // determine the type of triangle based on the angles
+            if (angleA == 90 || angleB == 90 || angleC == 90)
+            {
+                return "right";
+            }
+            else if (angleA > 90 || angleB > 90 || angleC > 90)
+            {
+                return "obtuse";
+            }
+            else
+            {
+                return "acute";
             }
         }
 
