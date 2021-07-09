@@ -27,6 +27,41 @@ namespace TriangleApplication
             InitializeComponent();
         }
 
+        private void TxtBoxSide_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox currentTextBox = (TextBox)sender;
+
+            // highlight errors
+            if (double.TryParse(currentTextBox.Text, out double side) || currentTextBox.Text == string.Empty)
+            {
+                currentTextBox.Background = Brushes.White;
+
+                // checks if all the other text boxes are valid
+                if (ValidateUserInput())
+                {
+                    Triangle triangle = new Triangle(double.Parse(TxtBoxSideA.Text), double.Parse(TxtBoxSideB.Text), double.Parse(TxtBoxSideC.Text));
+                    if (triangle.IsTriangle())
+                    {
+                        TxtBlockResults.Text = $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n" +
+                            $"The angles for the triangle are as follows:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°";
+                    }
+                    else
+                    {
+                        TxtBlockResults.Text = "A triangle is not possible with the given values.";
+                    }
+                }
+                else
+                {
+                    TxtBlockResults.Text = string.Empty;
+                }
+            }
+            else
+            {
+                currentTextBox.Background = Brushes.LightPink;
+                TxtBlockResults.Text = "Please enter valid numbers";
+            }
+        }
+
         /// <summary>
         /// Event handlers for when the user types something
         /// into the text boxes.

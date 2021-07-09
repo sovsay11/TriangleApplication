@@ -21,7 +21,10 @@ namespace TriangleApplication
             SideA = a;
             SideB = b;
             SideC = c;
-            SetTriangleAngles();
+            if (IsTriangle())
+            {
+                SetTriangleAngles();
+            }
         }
 
         /// <summary>
