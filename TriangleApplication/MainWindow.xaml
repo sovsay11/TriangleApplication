@@ -9,19 +9,23 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         WindowStyle="None"
-        Background="#CC6F29"
+        Background="Transparent"
+        AllowsTransparency="True"
         MouseDown="Window_MouseDown">
-    <StackPanel>
-        <StackPanel Background="#212121"
-                        Orientation="Horizontal">
-            <Label Content="Triangle Application"
+    <Border CornerRadius="10 10 10 10"
+            Background="#CC6F29">
+        <StackPanel>
+            <Border CornerRadius="9 9 0 0"
+                    Background="#212121">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Triangle Application"
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center"
                        FontWeight="Bold"
                        FontSize="32"
                        Foreground="#ffffff"
                        Margin="50 5 20 5"/>
-            <Button x:Name="BtnMin"
+                    <Button x:Name="BtnMin"
                         Content="—"
                         ToolTip="Minimize"
                         Foreground="White"
@@ -30,7 +34,7 @@
                         Background="Transparent"
                         BorderThickness="0"
                         Click="BtnMin_Click"/>
-            <Button x:Name="BtnExit"
+                    <Button x:Name="BtnExit"
                         Content="X"
                         ToolTip="Close"
                         Foreground="White"
@@ -39,41 +43,42 @@
                         Background="IndianRed"
                         BorderThickness="0"
                         Click="BtnExit_Click"/>
-        </StackPanel>
+                </StackPanel>
+            </Border>
 
-        <Border CornerRadius="10"
+            <Border CornerRadius="10"
                 Margin="15"
                 Background="#706258"
                 BorderThickness="1"
                 BorderBrush="#212121">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <!--Labels for sides-->
-                <Label Content="Side a length:"
+                    <!--Labels for sides-->
+                    <Label Content="Side a length:"
                    Foreground="#ffffff"
                Grid.Row="0"
                Grid.Column="0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
                        FontSize="18"/>
-                <Label Content="Side b length:"
+                    <Label Content="Side b length:"
                    Foreground="#ffffff"
                Grid.Row="1"
                Grid.Column="0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
                        FontSize="18"/>
-                <Label Content="Side c length:"
+                    <Label Content="Side c length:"
                    Foreground="#ffffff"
                Grid.Row="2"
                Grid.Column="0"
@@ -81,13 +86,13 @@
                VerticalAlignment="Center"
                        FontSize="18"/>
 
-                <!--Text boxes for user input-->
-                <Border CornerRadius="5"
+                    <!--Text boxes for user input-->
+                    <Border CornerRadius="5"
                             Grid.Row="0"
                             Grid.Column="1"
                             Margin="10"
                             Background="#ffffff">
-                    <TextBox x:Name="TxtBoxSideA"
+                        <TextBox x:Name="TxtBoxSideA"
                                  HorizontalContentAlignment="Left"
                                  VerticalContentAlignment="Center"
                                  Padding="2,0"
@@ -96,17 +101,17 @@
                                  BorderThickness="0"
                                  FontSize="14"
                                  TextChanged="TxtBoxSide_TextChanged"/>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
-                    </Border.Effect>
-                </Border>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                        </Border.Effect>
+                    </Border>
 
-                <Border CornerRadius="5"
+                    <Border CornerRadius="5"
                             Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
                             Background="#ffffff">
-                    <TextBox x:Name="TxtBoxSideB"
+                        <TextBox x:Name="TxtBoxSideB"
                                  Padding="2,0"
                                  Margin="5"
                                  Background="Transparent"
@@ -115,17 +120,17 @@
                              HorizontalContentAlignment="Left"
                              VerticalContentAlignment="Center"
                              TextChanged="TxtBoxSide_TextChanged"/>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
-                    </Border.Effect>
-                </Border>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                        </Border.Effect>
+                    </Border>
 
-                <Border CornerRadius="5"
+                    <Border CornerRadius="5"
                 Grid.Row="2"
                 Grid.Column="1"
                 Margin="10"
                 Background="#ffffff">
-                    <TextBox x:Name="TxtBoxSideC"
+                        <TextBox x:Name="TxtBoxSideC"
                                  Padding="2,0"
                                  Margin="5"
                                  Background="Transparent"
@@ -134,24 +139,24 @@
                                  HorizontalContentAlignment="Left"
                                  VerticalContentAlignment="Center"
                                  TextChanged="TxtBoxSide_TextChanged"/>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
-                    </Border.Effect>
-                </Border>
-            </Grid>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="5" Direction="270" Color="#706258"/>
+                        </Border.Effect>
+                    </Border>
+                </Grid>
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
-            </Border.Effect>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+                </Border.Effect>
 
-        </Border>
-        <!--Results-->
-        <Border Background="#706258"
+            </Border>
+            <!--Results-->
+            <Border Background="#706258"
                 CornerRadius="10"
                 Margin="15 5 15 15"
                 BorderThickness="1"
                 BorderBrush="#212121">
-            <TextBlock x:Name="TxtBlockResults"
+                <TextBlock x:Name="TxtBlockResults"
                        Foreground="#ffffff"
                        FontSize="18"
                        Height="120"
@@ -159,9 +164,10 @@
                        Text="Please enter some numbers for the sides! If the side values are valid, the side type, angle type, and degrees of the triangle will be shown."
                        TextWrapping="Wrap"
                        Margin="5 10 5 10"/>
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
-            </Border.Effect>
-        </Border>
-    </StackPanel>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+                </Border.Effect>
+            </Border>
+        </StackPanel>
+    </Border>
 </Window>
