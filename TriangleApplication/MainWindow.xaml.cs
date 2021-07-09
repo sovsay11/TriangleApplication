@@ -23,6 +23,7 @@ namespace TriangleApplication
         public MainWindow()
         {
             InitializeComponent();
+            TxtBoxSideA.Focus();
         }
 
         /// <summary>
@@ -50,13 +51,13 @@ namespace TriangleApplication
 
                     // return text to the user about triangle side type, angle type, and angle values or if a triangle cannot be created with the given values
                     TxtBlockResults.Text = triangle.IsTriangle()
-                        ? $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n" +
+                        ? $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n\n" +
                             $"The angles for the triangle are:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°"
                         : "A triangle is not possible with the given values.";
                 }
                 else
                 {
-                    TxtBlockResults.Text = string.Empty;
+                    TxtBlockResults.Text = "Please enter valid numbers";
                 }
             }
             else
@@ -73,7 +74,7 @@ namespace TriangleApplication
         /// <returns></returns>
         private bool ValidateUserInput()
         {
-            return TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty;
+            return double.TryParse(TxtBoxSideA.Text, out _) && double.TryParse(TxtBoxSideB.Text, out _) && double.TryParse(TxtBoxSideC.Text, out _);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
