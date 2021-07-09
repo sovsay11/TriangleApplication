@@ -54,6 +54,10 @@ namespace TriangleApplication
                         TxtBlockResults.Text = "A triangle is not possible with the given values.";
                     }
                 }
+                else
+                {
+                    TxtBlockResults.Text = string.Empty;
+                }
             }
             else
             {
@@ -83,6 +87,10 @@ namespace TriangleApplication
                         TxtBlockResults.Text = "A triangle is not possible with the given values.";
                     }
                 }
+                else
+                {
+                    TxtBlockResults.Text = string.Empty;
+                }
             }
             else
             {
@@ -111,6 +119,10 @@ namespace TriangleApplication
                     {
                         TxtBlockResults.Text = "A triangle is not possible with the given values.";
                     }
+                }
+                else
+                {
+                    TxtBlockResults.Text = string.Empty;
                 }
             }
             else
