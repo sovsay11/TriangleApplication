@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TriangleApplication
 {
-    class Triangle
+    internal class Triangle
     {
         // properties for the triangle
         public double SideA { get; set; }
@@ -21,10 +21,7 @@ namespace TriangleApplication
             SideA = a;
             SideB = b;
             SideC = c;
-            if (IsTriangle())
-            {
-                SetTriangleAngles();
-            }
+            if (IsTriangle()) SetTriangleAngles();
         }
 
         /// <summary>
@@ -35,21 +32,8 @@ namespace TriangleApplication
         /// <returns></returns>
         public string GetTriangleSideType()
         {
-            // we can assume all the values are valid at this point
-            // the types
-            // Scalene(side)
-            // Isosceles(side)
-            // Equilateral(side)
-            if (SideA == SideB && SideA == SideC)
-            {
-                return "equilateral";
-            }
-            else if (SideA != SideB && SideA != SideC && SideB != SideC)
-            {
-                return "scalene";
-            }
-            return "isosceles";
-
+            string sideType = (SideA == SideB && SideA == SideC) ? "equilateral" : (SideA != SideB && SideA != SideC && SideB != SideC) ? "scalene" : "isosceles";
+            return sideType;
         }
 
         /// <summary>
@@ -59,34 +43,21 @@ namespace TriangleApplication
         /// <returns></returns>
         public string GetTriangleAngleType()
         {
-            // determine the type of triangle based on the angles
-            if (AngleA == 90 || AngleB == 90 || AngleC == 90)
-            {
-                return "right";
-            }
-            else if (AngleA > 90 || AngleB > 90 || AngleC > 90)
-            {
-                return "obtuse";
-            }
-            return "acute";
+            string angleType = (AngleA == 90 || AngleB == 90 || AngleC == 90) ? "right" : (AngleA > 90 || AngleB > 90 || AngleC > 90) ? "obtuse" : "acute";
+            return angleType;
         }
 
         /// <summary>
-        /// Sets the angle values for the triangle given the sides.
-        /// Also determines whether the provided angles create an obtuse,
-        /// acute, or right triangle.
+        /// Calculates the angle values for the triangle given the sides.
         /// </summary>
-        /// <returns></returns>
         public void SetTriangleAngles()
         {
-            // cos(C) = (a2 + b2 − c2) / 2ab
-            // cos(A) = (b2 + c2 − a2) / 2bc
-            // cos(B) = (c2 + a2 − b2) / 2ca
+            // assignment of power variables for the equations below
             double powA = Math.Pow(SideA, 2);
             double powB = Math.Pow(SideB, 2);
             double powC = Math.Pow(SideC, 2);
 
-            // calculate the angles and round them to 2 decimal places
+            // calculate the angles and round them to 2 decimal places, converts to degrees
             AngleA = Math.Round(Math.Acos((powA + powB - powC) / (2 * SideA * SideB)) * (180 / Math.PI), 2);
             AngleB = Math.Round(Math.Acos((powB + powC - powA) / (2 * SideB * SideC)) * (180 / Math.PI), 2);
             AngleC = Math.Round(Math.Acos((powC + powA - powB) / (2 * SideC * SideA)) * (180 / Math.PI), 2);
@@ -94,7 +65,7 @@ namespace TriangleApplication
 
         /// <summary>
         /// Checks if the provided side values
-        /// produces a valid triangle. Returns a boolean value.
+        /// produce a valid triangle. Returns a boolean value.
         /// </summary>
         /// <returns></returns>
         public bool IsTriangle()

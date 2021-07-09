@@ -20,35 +20,39 @@ namespace TriangleApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        double sideA, sideB, sideC, angleA, angleB, angleC;
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Event handler method that will trigger once the user
+        /// types something into one of the text boxes. The input
+        /// will then be validated and used in calculations to determine the
+        /// triangle's type, shape, and other attributes based on the given input.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxtBoxSide_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox currentTextBox = (TextBox)sender;
 
-            // highlight errors
-            if (double.TryParse(currentTextBox.Text, out double side) || currentTextBox.Text == string.Empty)
+            // highlight errors and prompt the user to fix them
+            if (double.TryParse(currentTextBox.Text, out _) || currentTextBox.Text == string.Empty)
             {
                 currentTextBox.Background = Brushes.White;
 
-                // checks if all the other text boxes are valid
+                // checks if all the other text boxes are valid, will only trigger if the text boxes are all double values
                 if (ValidateUserInput())
                 {
+                    // create a new triangle with the validated input from the text boxes
                     Triangle triangle = new Triangle(double.Parse(TxtBoxSideA.Text), double.Parse(TxtBoxSideB.Text), double.Parse(TxtBoxSideC.Text));
-                    if (triangle.IsTriangle())
-                    {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n" +
-                            $"The angles for the triangle are as follows:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°";
-                    }
-                    else
-                    {
-                        TxtBlockResults.Text = "A triangle is not possible with the given values.";
-                    }
+
+                    // return text to the user about triangle side type, angle type, and angle values or if a triangle cannot be created with the given values
+                    TxtBlockResults.Text = triangle.IsTriangle()
+                        ? $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n" +
+                            $"The angles for the triangle are as follows:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°"
+                        : "A triangle is not possible with the given values.";
                 }
                 else
                 {
@@ -63,200 +67,13 @@ namespace TriangleApplication
         }
 
         /// <summary>
-        /// Event handlers for when the user types something
-        /// into the text boxes.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxtBoxSideA_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // validate current textbox input
-            if (double.TryParse(TxtBoxSideA.Text, out sideA) || TxtBoxSideA.Text == string.Empty)
-            {
-                TxtBoxSideA.Background = Brushes.White;
-
-                // validate all other user input
-                if (ValidateUserInput())
-                {
-                    // check if the sides produce a valid triangle
-                    if (IsTriangle())
-                    {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
-                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
-                    }
-                    else
-                    {
-                        TxtBlockResults.Text = "A triangle is not possible with the given values.";
-                    }
-                }
-                else
-                {
-                    TxtBlockResults.Text = string.Empty;
-                }
-            }
-            else
-            {
-                TxtBoxSideA.Background = Brushes.LightPink;
-                TxtBlockResults.Text = "Please enter valid numbers";
-            }
-        }
-
-        private void TxtBoxSideB_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // validate current textbox input
-            if (double.TryParse(TxtBoxSideB.Text, out sideB) || TxtBoxSideB.Text == string.Empty)
-            {
-                TxtBoxSideB.Background = Brushes.White;
-
-                // validate all other user input
-                if (ValidateUserInput())
-                {
-                    // check if the sides produce a valid triangle
-                    if (IsTriangle())
-                    {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
-                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
-                    }
-                    else
-                    {
-                        TxtBlockResults.Text = "A triangle is not possible with the given values.";
-                    }
-                }
-                else
-                {
-                    TxtBlockResults.Text = string.Empty;
-                }
-            }
-            else
-            {
-                TxtBoxSideB.Background = Brushes.LightPink;
-                TxtBlockResults.Text = "Please enter valid numbers";
-            }
-        }
-
-        private void TxtBoxSideC_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // validate current textbox input
-            if (double.TryParse(TxtBoxSideC.Text, out sideC) || TxtBoxSideC.Text == string.Empty)
-            {
-                TxtBoxSideC.Background = Brushes.White;
-
-                // validate all other user input
-                if (ValidateUserInput())
-                {
-                    // check if the sides produce a valid triangle
-                    if (IsTriangle())
-                    {
-                        TxtBlockResults.Text = $"These side lengths produce a valid {GetTriangleAngle()} {GetTriangleSideType()} triangle.\n" +
-                            $"The angles for the triangle are as follows:\n{angleA}°, {angleB}°, {angleC}°";
-                    }
-                    else
-                    {
-                        TxtBlockResults.Text = "A triangle is not possible with the given values.";
-                    }
-                }
-                else
-                {
-                    TxtBlockResults.Text = string.Empty;
-                }
-            }
-            else
-            {
-                TxtBoxSideC.Background = Brushes.LightPink;
-                TxtBlockResults.Text = "Please enter valid numbers";
-            }
-        }
-
-        /// <summary>
         /// Validates all user input. Checks if the text boxes
         /// are empty and if they have valid values (integers and floats).
         /// </summary>
         /// <returns></returns>
         private bool ValidateUserInput()
         {
-            if (TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Gets the type of triangle based on the side lengths.
-        /// Will return either scalene, isosceles, or equilateral.
-        /// Returns a string value.
-        /// </summary>
-        /// <returns></returns>
-        private string GetTriangleSideType()
-        {
-            // we can assume all the values are valid at this point
-            // the types
-            // Scalene(side)
-            // Isosceles(side)
-            // Equilateral(side)
-            if (sideA == sideB && sideA == sideC)
-            {
-                return "equilateral";
-            }
-            else if (sideA != sideB && sideA != sideC && sideB != sideC)
-            {
-                return "scalene";
-            }
-            else
-            {
-                return "isosceles";
-            }
-        }
-
-        /// <summary>
-        /// Sets the angle values for the triangle given the sides.
-        /// Also determines whether the provided angles create an obtuse,
-        /// acute, or right triangle.
-        /// </summary>
-        /// <returns></returns>
-        private string GetTriangleAngle()
-        {
-            // cos(C) = (a2 + b2 − c2) / 2ab
-            // cos(A) = (b2 + c2 − a2) / 2bc
-            // cos(B) = (c2 + a2 − b2) / 2ca
-            double powA = Math.Pow(sideA, 2);
-            double powB = Math.Pow(sideB, 2);
-            double powC = Math.Pow(sideC, 2);
-
-            // calculate the angles and round them
-            angleA = Math.Round(Math.Acos((powA + powB - powC) / (2 * sideA * sideB)) * (180 / Math.PI), 2);
-            angleB = Math.Round(Math.Acos((powB + powC - powA) / (2 * sideB * sideC)) * (180 / Math.PI), 2);
-            angleC = Math.Round(Math.Acos((powC + powA - powB) / (2 * sideC * sideA)) * (180 / Math.PI), 2);
-
-            // determine the type of triangle based on the angles
-            if (angleA == 90 || angleB == 90 || angleC == 90)
-            {
-                return "right";
-            }
-            else if (angleA > 90 || angleB > 90 || angleC > 90)
-            {
-                return "obtuse";
-            }
-            else
-            {
-                return "acute";
-            }
-        }
-
-        /// <summary>
-        /// Checks if the provided side values
-        /// produces a valid triangle. Returns a boolean value.
-        /// </summary>
-        /// <returns></returns>
-        private bool IsTriangle()
-        {
-            if (sideA + sideB > sideC &&
-                sideA + sideC > sideB &&
-                sideB + sideC > sideA)
-            {
-                return true;
-            }
-            return false;
+            return TxtBoxSideA.Text != string.Empty && TxtBoxSideB.Text != string.Empty && TxtBoxSideC.Text != string.Empty;
         }
     }
 }
