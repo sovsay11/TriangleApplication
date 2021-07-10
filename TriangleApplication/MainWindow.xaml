@@ -18,7 +18,7 @@
         <!--Place contents in a stackpanel-->
         <StackPanel>
             <!--Title, min, and close buttons-->
-            <Border CornerRadius="9 9 0 0"
+            <Border CornerRadius="7 7 0 0"
                     Background="#212121">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Triangle Application"
