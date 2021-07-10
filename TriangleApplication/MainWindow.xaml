@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriangleApplication"
         mc:Ignorable="d"
-        Title="Triangle Application" Height="400" Width="460"
+        Title="Triangle Application" Height="400" Width="920"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         WindowStyle="None"
@@ -15,19 +15,30 @@
     <!--Entire window-->
     <Border CornerRadius="10 10 10 10"
             Background="#CC6F29">
-        <!--Place contents in a stackpanel-->
-        <StackPanel>
+        <!--Place contents in a grid-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <!--Title, min, and close buttons-->
             <Border CornerRadius="9 9 0 0"
-                    Background="#212121">
-                <StackPanel Orientation="Horizontal">
+                    Background="#212121"
+                    Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
                     <Label Content="Triangle Application"
                            VerticalContentAlignment="Center"
                            HorizontalContentAlignment="Center"
                            FontWeight="Bold"
                            FontSize="32"
                            Foreground="#ffffff"
-                           Margin="50 5 20 5"/>
+                           Margin="290,5,230,5"/>
                     <Button x:Name="BtnMin"
                             Content="—"
                             ToolTip="Minimize"
@@ -53,13 +64,13 @@
                     Margin="15"
                     Background="#706258"
                     BorderThickness="1"
-                    BorderBrush="#212121">
+                    BorderBrush="#212121"
+                    Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*"/>
@@ -99,7 +110,7 @@
                                  HorizontalContentAlignment="Left"
                                  VerticalContentAlignment="Center"
                                  Padding="2,0"
-                                 Margin="5"
+                                 Margin="4"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  FontSize="14"
@@ -115,7 +126,7 @@
                             Background="#ffffff">
                         <TextBox x:Name="TxtBoxSideB"
                                  Padding="2,0"
-                                 Margin="5"
+                                 Margin="4"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  FontSize="14"
@@ -133,7 +144,7 @@
                             Background="#ffffff">
                         <TextBox x:Name="TxtBoxSideC"
                                  Padding="2,0"
-                                 Margin="5"
+                                 Margin="4"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  FontSize="14"
@@ -146,7 +157,7 @@
                     </Border>
                 </Grid>
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="270" Color="#706258"/>
                 </Border.Effect>
             </Border>
             
@@ -155,7 +166,8 @@
                     CornerRadius="10"
                     Margin="15 5 15 15"
                     BorderThickness="1"
-                    BorderBrush="#212121">
+                    BorderBrush="#212121"
+                    Grid.Row="2">
                 <TextBlock x:Name="TxtBlockResults"
                            Foreground="#ffffff"
                            FontSize="18"
@@ -165,9 +177,32 @@
                            TextWrapping="Wrap"
                            Margin="5 10 5 10"/>
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Direction="270" Color="#706258"/>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="270" Color="#706258"/>
                 </Border.Effect>
             </Border>
-        </StackPanel>
+            
+            <!--Triangle canvas-->
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Background="#ffffff"
+                    CornerRadius="10"
+                    Margin="15"
+                    BorderThickness="1"
+                    BorderBrush="#212121">
+                <Canvas x:Name="CanvasShape"
+                        Height="300"
+                        Width="430">
+                    <Polygon x:Name="PolyTriangle"
+                             Canvas.Top="150"
+                             Canvas.Left="215"
+                             Stroke="Black"
+                             StrokeThickness="4"/>
+                </Canvas>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="270" Color="#706258"/>
+                </Border.Effect>
+            </Border>
+        </Grid>
     </Border>
 </Window>

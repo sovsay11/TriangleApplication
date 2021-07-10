@@ -8,9 +8,12 @@ namespace TriangleApplication
         public double SideA { get; set; }
         public double SideB { get; set; }
         public double SideC { get; set; }
-        public double AngleB { get; set; }
         public double AngleA { get; set; }
+        public double AngleB { get; set; }
         public double AngleC { get; set; }
+        public double RadianA { get; set; }
+        public double RadianB { get; set; }
+        public double RadianC { get; set; }
 
         public Triangle(double a, double b, double c)
         {
@@ -52,6 +55,10 @@ namespace TriangleApplication
             double powA = Math.Pow(SideA, 2);
             double powB = Math.Pow(SideB, 2);
             double powC = Math.Pow(SideC, 2);
+
+            RadianA = Math.Round(Math.Acos((powA + powB - powC) / (2 * SideA * SideB)), 2);
+            RadianB = Math.Round(Math.Acos((powB + powC - powA) / (2 * SideB * SideC)), 2);
+            RadianC = Math.Round(Math.Acos((powC + powA - powB) / (2 * SideC * SideA)), 2);
 
             // calculate the angles and round them to 2 decimal places, converts to degrees
             AngleA = Math.Round(Math.Acos((powA + powB - powC) / (2 * SideA * SideB)) * (180 / Math.PI), 2);

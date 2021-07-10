@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace TriangleApplication
 {
@@ -44,6 +46,8 @@ namespace TriangleApplication
                         ? $"These side lengths produce a valid {triangle.GetTriangleAngleType()} {triangle.GetTriangleSideType()} triangle.\n\n" +
                             $"The angles for the triangle are:\n{triangle.AngleA}°, {triangle.AngleB}°, {triangle.AngleC}°"
                         : "A triangle is not possible with the given values.";
+
+                    DrawTriangle(triangle);
                 }
                 else
                 {
@@ -55,6 +59,39 @@ namespace TriangleApplication
                 currentTextBox.Background = Brushes.LightPink;
                 TxtBlockResults.Text = "Please enter valid numbers";
             }
+        }
+
+        private void DrawTriangle(Triangle triangle)
+        {
+            // canvas limits
+            // top left is 0 0, bottom right is 430 300
+            // Height = "300"
+            // Width = "430"
+            // middle of canvas = 215, 150
+            // upper limits are 215, 150 for scaling
+
+            // we also know the angles so...
+            double x1 = triangle.SideA;
+            double y1 = 0;
+
+            double x2 = 0;
+            double y2 = 0;
+
+            // x = x1 + m(y2 - y1) / n
+            double x3 = x1 + (triangle.SideA * (y1 - y2) / triangle.SideB);
+            double y3 = triangle.SideC;
+            //x = start_x + len * cos(angle);
+            //y = start_y + len * sin(angle);
+            // assume we draw the triangle at x, y = 0
+
+            // need to perform calculations prior to this
+            Point pointA = new Point(x1, y1);
+            Point pointB = new Point(x2, y2);
+            Point pointC = new Point(x3, y3);
+
+            PointCollection points = new PointCollection() { pointA, pointB, pointC};
+
+            PolyTriangle.Points = points;
         }
 
         /// <summary>
